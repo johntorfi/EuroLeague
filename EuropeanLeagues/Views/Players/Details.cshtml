@@ -1,0 +1,88 @@
+﻿@model EuropeanLeagues.Models.Player
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+    <div class="indexBlack blackBg">
+        <div class="table tableFont whiteText">
+            <h2 class="text-left">Player details</h2>
+
+            <div class="detailsBody">
+                <div class="row">
+                    <div class="text-left col-md-8">
+
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.FirstName)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.FirstName)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.LastName)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.LastName)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Nationality)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Nationality)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Club.Team)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Club.Team)
+                            </dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Position)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Position)
+                            </dd>
+
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Club.Team)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Club.Team)
+                            </dd>
+
+                        </dl>
+                    </div>
+
+                    <div class="col-md-4">
+                        <img src="@Url.Content(Model.Picture)" height="200" width="190" />
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div class="row">
+
+
+                    <div class="text-left col-md-6">
+                        <p>
+                            @Html.ActionLink("Edit", "Edit", new { id = Model.Playerid }, new { @class = "btn btn-default" }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = Model.Playerid }, new { @class = "btn btn-default" }) |
+                            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+                        </p>
+                    </div>
+
+
+
+                </div>
+            </div>

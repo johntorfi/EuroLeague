@@ -1,0 +1,93 @@
+﻿@model EuropeanLeagues.Models.League
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<div class="indexBlack blackBg">
+    <div class="table tableFont whiteText">
+
+        <h2 class="text-left"> League Detailes</h2>
+
+        <div class="detailsBody">
+
+            <div class="row">
+                <div class="text-left col-md-8">
+
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.LeagueName)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.LeagueName)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Country)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Country)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.FoundationYear)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.FoundationYear)
+                        </dd>
+                    </dl>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <img src="@Url.Content(Model.Logo)" height="200" width="190" />
+                </div>
+            </div>
+
+
+            <br />
+            <br />
+            <div class="row">
+                <div class="text-left col-md-12">
+                    <p>
+                        @Html.ActionLink("Edit", "Edit", new { id = Model.Lid }, new { @class = "btn btn-default" }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = Model.Lid }, new { @class = "btn btn-default" }) |
+                        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+                    </p>
+                </div>
+            </div>
+
+            <br />
+            <br />
+            <div class="text-left col-md-12">
+                <h4 class="text-left"> League's club</h4>
+                <br />
+
+                <div>
+
+
+                    @foreach (var club in Model.Clubs)
+                    {
+
+
+
+                        <span class="myImgContainer">
+
+                            <a href="@Url.Action("Details", new {id=Model.Lid })">
+                                <img class="myImgClub" src="@Url.Content(club.ImageUrl)" />
+                            </a>
+
+
+
+                        </span>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

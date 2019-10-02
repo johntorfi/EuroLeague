@@ -1,0 +1,89 @@
+﻿@model IEnumerable<EuropeanLeagues.Models.Player>
+@{
+    ViewBag.Title = "Players";
+}
+
+
+
+<div class="container tableFont">
+
+
+    <div class="indexHeading text-center">
+        <h1 class="headingFont">Players Database</h1>
+    </div>
+
+    <div class="row">
+
+
+        <div class="col-sm-5">
+            @using (Html.BeginForm())
+            {
+                <p>
+
+                    @Html.TextBox("SearchString")
+                    <input type="submit" value="Search" class="btn btn-default " />
+                </p>
+            }
+
+        </div>
+        <div class="col-sm-offset-5 col-sm-2">
+            @Html.ActionLink("Add a new player", "Create", null, new { @class = "add btn btn-default" }) <br /><br />
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="indexBlack blackBg">
+            <table class="table tableFont whiteText">
+
+
+
+                @foreach (var item in Model)
+
+                {
+                    <tr>
+
+
+                        <td>
+                            <a href="@Url.Action("Details", new {id = item.Playerid })">
+                                <img src="@Url.Content(item.Picture)" height="100" width="90" />
+                            </a>
+                        </td>
+
+                        <td>
+                            <a class="whiteText singerName " href="@Url.Action("Details", new {id = item.Playerid })">
+                                @Html.DisplayFor(s => item.FirstName)
+                            </a>
+                        </td>
+
+                        <td>@Html.DisplayFor(s => item.LastName)</td>
+
+                        <td>@Html.DisplayFor(s => item.Nationality)</td>
+
+                        <td>
+                            @Html.DisplayFor(s => item.Likes)
+                            <i class="fas fa-thumbs-up"></i>
+                        </td>
+
+                        <td>@Html.ActionLink("Like", "Like", new { item.Playerid }, new { @class = "btn btn-default tableFont" })</td>
+
+                        <td>
+                            @Html.DisplayFor(s => item.Dislikes)
+                            <i class="fas fa-thumbs-down"></i>
+                        </td>
+
+                        <td>@Html.ActionLink("Dislike", "Dislike", new { item.Playerid }, new { @class = "btn btn-default tableFont" })</td>
+
+
+                    </tr>
+                }
+
+
+            </table>
+        </div>
+
+    </div>
+</div>
+
+
+

@@ -1,0 +1,226 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.myImg {
+    height: 100px;
+    width: 90px;
+    margin: 20px;
+}
+
+.myImgClub {
+    height: 100px;
+    width: 90px;
+    margin: 10px;
+}
+
+.myImgDetails {
+    height: 240px;
+    width: 150px;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black;
+}
+
+.playerContainer {
+    position: relative;
+    bottom: 45%;
+    top: 45%;
+}
+
+
+    .playerContainer a {
+        color: white;
+        font-weight: 600;
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+        font-family: 'Josefin Sans', sans-serif;
+        font-size: 15px;
+    }
+
+
+
+
+
+.searchContainer {
+    position: relative;
+    top: 50vh;
+}
+
+.playerSearch {
+    width: 320px;
+}
+
+.headingContainer {
+    position: relative;
+    top: 35vh;
+}
+
+.myImgContainer {
+    height: 100px;
+    width: 90px;
+    margin: 20px;
+}
+
+.clubheadingContainer h1 {
+    margin-top: 15vh;
+    font-size: 20px;
+}
+
+.clubSearchContainer {
+    margin-top: 5vh;
+}
+
+.clubContainer {
+    margin-top: 3vh;
+}
+
+.addClub {
+    margin-left: 50px;
+}
+
+
+.detailsContainer {
+    background-color: rgba(248, 249, 250, 0.78);
+    margin: 8vw 16vw;
+    border-bottom-left-radius: 100px;
+    border-style: outset;
+    padding-bottom: 60px;
+    padding-left: 8vw;
+    padding-right: 8vw;
+}
+
+.detailsBody {
+    margin-top: 80px;
+}
+
+.AddContainer {
+    background-color: rgba(248, 249, 250, 0.78);
+    margin: 8vw 23vw;
+    border-bottom-left-radius: 60px;
+    border-style: outset;
+    padding-bottom: 40px;
+}
+
+.cantFind {
+    font-weight: bold;
+    margin-left: 170px;
+}
+
+.addLeague {
+    margin-left: 50px;
+}
+
+.btn-default {
+    font-weight: bold;
+    font-size: 15px;
+}
+
+.footer {
+    display: block;
+}
+
+
+.leagueContainer {
+    margin-right: 16vw;
+    margin-left: 16vw;
+}
+.detail-list {
+    padding-left: 50px;
+    padding-right: 30px;
+}
+
+.DetailsfirstRaw {
+    margin-top: 50px;
+    margin-bottom: 150px;
+}
+
+.createfirstraw {
+    margin-bottom: 30px;
+}
+
+
+.indexHeading {
+    position: relative;
+    margin-bottom: 50px;
+    z-index: 2000;
+}
+
+body {
+    background-image: url('BG7.jpg');
+    color: rgb(0, 0, 0);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+    background-attachment: fixed;
+}
+
+
+
+.container {
+    position: relative;
+    z-index: 3000;
+}
+
+.blackBg {
+    background-color: rgba(0,0,0,0.4);
+    position: relative;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+}
+
+.whiteText {
+    color: rgb(255, 255, 255);
+}
+
+
+
+.tableFont {
+    font-size: 16px;
+    font-family: 'Exo 2', sans-serif;
+}
+
+.headingFont {
+    color: #333232;
+    font-size: 50px;
+    font-weight: bold;
+    text-shadow: 3px 3px 3px white;
+}
+
+.indexBlack {
+    padding-bottom: 0px;
+}
+
+.add {
+    font-size: 16px;
+}
+
+.playerName {
+    text-decoration-line: underline;
+}

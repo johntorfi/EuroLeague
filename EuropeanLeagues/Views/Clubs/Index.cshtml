@@ -1,0 +1,57 @@
+﻿@model IEnumerable<EuropeanLeagues.Models.Club>
+@{
+    ViewBag.Title = "Club";
+}
+@{
+    int count = 0;
+}
+<div class="container tableFont">
+
+    <div class="indexHeading text-center">
+        <h1 class="headingFont">Clubs Database</h1>
+    </div>
+    <div class="row">
+
+
+        <div class="col-sm-5">
+
+            @using (Html.BeginForm("Index", "Clubs", "FormMethod.Get"))
+            {
+                <p>
+
+                    @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @placeholder = " Search by club name.." })
+                    <input type="submit" value="Search" class="btn btn-default " />
+
+                </p>
+            }
+        </div>
+        <div class="col-sm-offset-5 col-sm-2">
+
+
+            @Html.ActionLink("Add a new Club", "Create", null, new { returnView = "indexView" }, new { @class = "add btn btn-default" })</span>
+
+            <br /><br />
+        </div>
+    </div>
+
+
+
+
+    <div class="clubContainer">
+        @*display a clickable image of each item*@
+        @foreach (var item in Model)
+        {
+            if (count % 5 == 0)
+            {
+                <br />
+                <br />
+            }
+            <span class="myImgContainer">
+                <a href="@Url.Action("Details", new {id=item.Clubid })">
+                    <img src="@Url.Content(item.ImageUrl)" />
+                </a>
+            </span>
+            count++;
+        }
+    </div>
+</div>

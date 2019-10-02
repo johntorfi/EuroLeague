@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Database1Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Club">
+          <Key>
+            <PropertyRef Name="Clubid" />
+          </Key>
+          <Property Name="Clubid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Team" Type="varchar(max)" Nullable="false" />
+          <Property Name="Manager" Type="varchar(max)" />
+          <Property Name="Venue" Type="varchar(max)" />
+          <Property Name="Lid" Type="int" />
+          <Property Name="ImageUrl" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="League">
+          <Key>
+            <PropertyRef Name="Lid" />
+          </Key>
+          <Property Name="Lid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Logo" Type="varchar(max)" />
+          <Property Name="LeagueName" Type="varchar(max)" />
+          <Property Name="Country" Type="varchar(max)" />
+          <Property Name="FoundationYear" Type="int" />
+        </EntityType>
+        <EntityType Name="Players">
+          <Key>
+            <PropertyRef Name="Playerid" />
+          </Key>
+          <Property Name="Playerid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar(max)" Nullable="false" />
+          <Property Name="LastName" Type="varchar(max)" Nullable="false" />
+          <Property Name="Nationality" Type="varchar(max)" />
+          <Property Name="Clubid" Type="int" />
+          <Property Name="Position" Type="varchar(max)" />
+          <Property Name="Picture" Type="varchar(max)" />
+        </EntityType>
+        <Association Name="FK__Club__Lid__25869641">
+          <End Role="League" Type="Self.League" Multiplicity="0..1" />
+          <End Role="Club" Type="Self.Club" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="League">
+              <PropertyRef Name="Lid" />
+            </Principal>
+            <Dependent Role="Club">
+              <PropertyRef Name="Lid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Players__Clubid__286302EC">
+          <End Role="Club" Type="Self.Club" Multiplicity="0..1" />
+          <End Role="Players" Type="Self.Players" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Club">
+              <PropertyRef Name="Clubid" />
+            </Principal>
+            <Dependent Role="Players">
+              <PropertyRef Name="Clubid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Database1ModelStoreContainer">
+          <EntitySet Name="Club" EntityType="Self.Club" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="League" EntityType="Self.League" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Players" EntityType="Self.Players" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Club__Lid__25869641" Association="Self.FK__Club__Lid__25869641">
+            <End Role="League" EntitySet="League" />
+            <End Role="Club" EntitySet="Club" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Players__Clubid__286302EC" Association="Self.FK__Players__Clubid__286302EC">
+            <End Role="Club" EntitySet="Club" />
+            <End Role="Players" EntitySet="Players" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="Database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Club">
+          <Key>
+            <PropertyRef Name="Clubid" />
+          </Key>
+          <Property Name="Clubid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Team" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Manager" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Venue" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Lid" Type="Int32" />
+          <Property Name="ImageUrl" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="League" Relationship="Self.FK__Club__Lid__25869641" FromRole="Club" ToRole="League" />
+          <NavigationProperty Name="Players" Relationship="Self.FK__Players__Clubid__286302EC" FromRole="Club" ToRole="Players" />
+        </EntityType>
+        <EntityType Name="League">
+          <Key>
+            <PropertyRef Name="Lid" />
+          </Key>
+          <Property Name="Lid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="LeagueName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FoundationYear" Type="Int32" />
+          <NavigationProperty Name="Clubs" Relationship="Self.FK__Club__Lid__25869641" FromRole="League" ToRole="Club" />
+        </EntityType>
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="Playerid" />
+          </Key>
+          <Property Name="Playerid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nationality" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Clubid" Type="Int32" />
+          <Property Name="Position" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Picture" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Club" Relationship="Self.FK__Players__Clubid__286302EC" FromRole="Players" ToRole="Club" />
+        </EntityType>
+        <Association Name="FK__Club__Lid__25869641">
+          <End Role="League" Type="Self.League" Multiplicity="0..1" />
+          <End Role="Club" Type="Self.Club" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="League">
+              <PropertyRef Name="Lid" />
+            </Principal>
+            <Dependent Role="Club">
+              <PropertyRef Name="Lid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Players__Clubid__286302EC">
+          <End Role="Club" Type="Self.Club" Multiplicity="0..1" />
+          <End Role="Players" Type="Self.Player" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Club">
+              <PropertyRef Name="Clubid" />
+            </Principal>
+            <Dependent Role="Players">
+              <PropertyRef Name="Clubid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Database1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clubs" EntityType="Self.Club" />
+          <EntitySet Name="Leagues" EntityType="Self.League" />
+          <EntitySet Name="Players" EntityType="Self.Player" />
+          <AssociationSet Name="FK__Club__Lid__25869641" Association="Self.FK__Club__Lid__25869641">
+            <End Role="League" EntitySet="Leagues" />
+            <End Role="Club" EntitySet="Clubs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Players__Clubid__286302EC" Association="Self.FK__Players__Clubid__286302EC">
+            <End Role="Club" EntitySet="Clubs" />
+            <End Role="Players" EntitySet="Players" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities">
+          <EntitySetMapping Name="Clubs">
+            <EntityTypeMapping TypeName="Database1Model.Club">
+              <MappingFragment StoreEntitySet="Club">
+                <ScalarProperty Name="Clubid" ColumnName="Clubid" />
+                <ScalarProperty Name="Team" ColumnName="Team" />
+                <ScalarProperty Name="Manager" ColumnName="Manager" />
+                <ScalarProperty Name="Venue" ColumnName="Venue" />
+                <ScalarProperty Name="Lid" ColumnName="Lid" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Leagues">
+            <EntityTypeMapping TypeName="Database1Model.League">
+              <MappingFragment StoreEntitySet="League">
+                <ScalarProperty Name="Lid" ColumnName="Lid" />
+                <ScalarProperty Name="Logo" ColumnName="Logo" />
+                <ScalarProperty Name="LeagueName" ColumnName="LeagueName" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="FoundationYear" ColumnName="FoundationYear" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Players">
+            <EntityTypeMapping TypeName="Database1Model.Player">
+              <MappingFragment StoreEntitySet="Players">
+                <ScalarProperty Name="Playerid" ColumnName="Playerid" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="Clubid" ColumnName="Clubid" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Picture" ColumnName="Picture" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
